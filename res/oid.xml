@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oid>
+	<sysInfo>
+		<item name="SysDesc">.1.3.6.1.2.1.1.1.0</item>
+		<item name="sysUptime">.1.3.6.1.2.1.1.3.0</item>
+		<item name="sysContact">.1.3.6.1.2.1.1.4.0</item>
+		<item name="SysName">.1.3.6.1.2.1.1.5.0</item>
+		<item name="SysLocation">.1.3.6.1.2.1.1.6.0</item>
+		<item name="SysLocation">.1.3.6.1.2.1.1.7.0</item>
+		<item name="hrSWRunName">.1.3.6.1.2.1.25.4.2.1.2</item>
+		<item name="hrSWInstalledName">.1.3.6.1.2.1.25.6.3.1.2</item>
+	</sysInfo>
+	<interface>
+		<item name="IfNumber">.1.3.6.1.2.1.2.1.0</item>
+		<item name="IfDescr">.1.3.6.1.2.1.2.2.1.2</item>
+		<item name="IfType">.1.3.6.1.2.1.2.2.1.3</item>
+		<item name="IfMTU">.1.3.6.1.2.1.2.2.1.4</item>
+		<item name="IfSpeed">.1.3.6.1.2.1.2.2.1.5</item>
+		<item name="IfPhysAddress">.1.3.6.1.2.1.2.2.1.6</item>
+		<item name="IfOperStatus">.1.3.6.1.2.1.2.2.1.8</item>
+		<item name="IfInOctet">.1.3.6.1.2.1.2.2.1.10</item>
+		<item name="IfOutOctet">.1.3.6.1.2.1.2.2.1.16</item>
+		<item name="IfInUcastPkts">.1.3.6.1.2.1.2.2.1.11</item>
+		<item name="IfOutUcastPkts">.1.3.6.1.2.1.2.2.1.17</item>
+	</interface>
+	<cpuInfo>
+		<item name="ssCpuUser">.1.3.6.1.4.1.2021.11.9.0</item>
+		<item name="ssCpuSystem">.1.3.6.1.4.1.2021.11.10.0</item>
+		<item name="ssCpuIdle">.1.3.6.1.4.1.2021.11.11.0</item>
+		<item name="ssCpuRawUser">.1.3.6.1.4.1.2021.11.50.0</item>
+		<item name="ssCpuRawNice">.1.3.6.1.4.1.2021.11.51.0</item>
+		<item name="ssCpuRawSystem">.1.3.6.1.4.1.2021.11.52.0</item>
+		<item name="ssCpuRawIdle">.1.3.6.1.4.1.2021.11.53.0</item>
+		<item name="hrProcessorLoad">.1.3.6.1.2.1.25.3.3.1.2</item>
+	</cpuInfo>
+	<swapAndDisk>
+		<item name="hrMemorySize">.1.3.6.1.2.1.25.2.2.0</item>
+		<item name="hrStorageIndex">.1.3.6.1.2.1.25.2.3.1.1</item>
+		<item name="hrStorageType">.1.3.6.1.2.1.25.2.3.1.1</item>
+		<item name="hrStorageDescr">.1.3.6.1.2.1.25.2.3.1.3</item>
+		<item name="hrStorageAllocationUnits">.1.3.6.1.2.1.25.2.3.1.4</item>
+		<item name="hrStorageSize">.1.3.6.1.2.1.25.2.3.1.5</item>
+		<item name="hrStorageUsed">.1.3.6.1.2.1.25.2.3.1.6</item>
+		<item name="memTotalSwap">.1.3.6.1.4.1.2021.4.3.0</item>
+		<item name="memAvailSwap">.1.3.6.1.4.1.2021.4.4.0</item>
+		<item name="memTotalReal">.1.3.6.1.4.1.2021.4.5.0</item>
+		<item name="memAvailReal">.1.3.6.1.4.1.2021.4.6.0</item>
+		<item name="memTotalFree">.1.3.6.1.4.1.2021.4.11.0</item>
+		<item name="memShared">.1.3.6.1.4.1.2021.4.13.0</item>
+		<item name="memBuffer">.1.3.6.1.4.1.2021.4.14.0</item>
+		<item name="memCached">.1.3.6.1.4.1.2021.4.15.0</item>
+		<item name="dskPath">.1.3.6.1.4.1.2021.9.1.2</item>
+		<item name="dskDevice">.1.3.6.1.4.1.2021.9.1.3</item>
+		<item name="dskTotal">.1.3.6.1.4.1.2021.9.1.6</item>
+		<item name="dskAvail">.1.3.6.1.4.1.2021.9.1.7</item>
+		<item name="dskUsed">.1.3.6.1.4.1.2021.9.1.8</item>
+		<item name="dskPercent">.1.3.6.1.4.1.2021.9.1.8</item>
+		<item name="dskPercentNode">.1.3.6.1.4.1.2021.9.1.10</item>
+	</swapAndDisk>
+</oid>
