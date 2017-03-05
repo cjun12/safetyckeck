@@ -9,7 +9,21 @@
 	<constant name="struts.i18n.reload" value="true" />
 
 	<package name="default" extends="struts-default" namespace="/">
-
+		<interceptors>
+			<interceptor-stack name="GlobalStack">
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="GlobalStack"></default-interceptor-ref>
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
 	</package>
 	<package name="User" extends="default" namespace="/user">
 		<action name="login" method="login" class="com.safety.action.UserAction">

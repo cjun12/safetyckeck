@@ -40,6 +40,7 @@ public class UserAction extends ActionSupport {
 		if(user != null)
 			return ERROR;
 		u.setPassword(Toolkit.getMD5(u.getPassword()));
+		u.setEmail("www.dianbiao.com");
 		userService.saveUser(u);
 		return SUCCESS;
 	}

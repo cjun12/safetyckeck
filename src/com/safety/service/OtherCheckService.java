@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class OtherCheck {
+public class OtherCheckService {
 	public static boolean ping(String addr) {
 		boolean result = false;
 		try {

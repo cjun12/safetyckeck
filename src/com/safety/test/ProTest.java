@@ -7,8 +7,8 @@ import org.snmp4j.PDU;
 import org.snmp4j.event.ResponseEvent;
 import org.snmp4j.mp.SnmpConstants;
 
-import com.safety.service.OtherCheck;
-import com.safety.service.SnmpCheck;
+import com.safety.service.OtherCheckService;
+import com.safety.service.SnmpCheckService;
 import com.safety.util.SnmpHelper;
 
 public class ProTest {
@@ -16,7 +16,7 @@ public class ProTest {
 
 	public static void main(String[] args) {
 		SnmpHelper snmpHelper = new SnmpHelper(SnmpConstants.version2c);
-		SnmpCheck snmpCheck = new SnmpCheck(snmpHelper, addr);
+		SnmpCheckService snmpCheck = new SnmpCheckService(snmpHelper, addr);
 		try {
 			ResponseEvent responseEvent = snmpCheck.getSysInfo();
 			PDU response = responseEvent.getResponse();
@@ -29,6 +29,6 @@ public class ProTest {
 
 	@Test
 	public void httpTest() {
-		System.out.println(OtherCheck.dns("baidu.com"));
+		System.out.println(OtherCheckService.dns("baidu.com"));
 	}
 }

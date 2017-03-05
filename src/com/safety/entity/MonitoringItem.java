@@ -88,7 +88,7 @@ public class MonitoringItem {
 		this.frequency = frequency;
 	}
 
-	@Column(name = "task_type")
+	@Column(name = "state")
 	@Enumerated(EnumType.ORDINAL)
 	public State getState() {
 		return state;

@@ -1,8 +1,5 @@
 package com.safety.service;
 import java.io.IOException;
-import java.util.Map;
-
-import javax.xml.ws.Response;
 
 import org.snmp4j.PDU;
 import org.snmp4j.event.ResponseEvent;
@@ -12,11 +9,11 @@ import org.snmp4j.smi.VariableBinding;
 import com.safety.util.OidHelper;
 import com.safety.util.SnmpHelper;
 
-public class SnmpCheck {
+public class SnmpCheckService {
 	private SnmpHelper snmpHelper = null;
 	private String addr = null;
 
-	public SnmpCheck(SnmpHelper snmpHelper, String addr) {
+	public SnmpCheckService(SnmpHelper snmpHelper, String addr) {
 		this.snmpHelper = snmpHelper;
 		this.addr = addr;
 	}

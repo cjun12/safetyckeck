@@ -31,7 +31,10 @@ public class BaseDAOImpl<T> implements IBaseDAO<T> {
 	}
 
 	public Serializable save(T o) {
-		return this.getCurrentSession().save(o);
+//		return this.getCurrentSession().save(o);
+		Serializable t = this.getCurrentSession().save(o);
+		System.out.println(t);
+		return t;
 	}
 
 	public void delete(T o) {

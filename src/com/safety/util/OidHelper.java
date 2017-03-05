@@ -1,19 +1,14 @@
 package com.safety.util;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.junit.Test;
 
 public class OidHelper {
 	private static SAXReader saxReader = null;
@@ -51,7 +46,7 @@ public class OidHelper {
 	
 	public List<String> getOidByClassify(String classify){
 		List<Element> elements = rootElement.element(classify).elements("item");
-		List<String> result = new ArrayList<>();
+		List<String> result = new ArrayList<String>();
 		for(Element item :elements ){
 			result.add(item.getText());
 		}

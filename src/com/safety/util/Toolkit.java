@@ -2,9 +2,13 @@ package com.safety.util;
 
 import java.security.MessageDigest;
 
+import org.apache.commons.mail.HtmlEmail;
+import org.apache.log4j.Logger;
+
 import com.safety.entity.Mail;
 
 public class Toolkit {
+	private final Logger logger =Logger.getLogger(Toolkit.class);
 	public static String getMD5(String password) {
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -29,6 +33,28 @@ public class Toolkit {
 	}
 	
 	public boolean sendEmail(Mail mail){
-		HtmlEmail
+		HtmlEmail email = new HtmlEmail();
+		try{
+			email.setHostName(mail.getHost());
+			email.setCharset(Mail.ENCODING);
+			email.setFrom(mail.getSender(),mail.getName());
+			email.setAuthentication(mail.getUsername(), mail.getPassword());
+			if(mail.getReceiverName().isEmpty()){
+				email.addTo(mail.getReceiver());
+			}else{
+				email.addTo(mail.getReceiver(),mail.getReceiverName());
+			}
+			email.setSubject(mail.getSubject());
+			email.setHtmlMsg(mail.getMessage());
+			email.send();
+			if(logger.isDebugEnabled()){
+				logger.debug(mail.getSender()+" 发送邮件到 "+mail.getReceiver());
+			}
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			logger.info(mail.getSender()+" 发送邮件到 "+mail.getReceiver()+" 失败");
+			return false;
+		}
 	}
 }

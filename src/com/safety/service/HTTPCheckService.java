@@ -12,13 +12,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.tools.Tool;
 
-import gui.ava.html.image.generator.HtmlImageGenerator;
 
-public class HTTPCheck {
+public class HTTPCheckService {
 	private String addr = null;
-	public HTTPCheck(String addr) {
+	public HTTPCheckService(String addr) {
 		// TODO Auto-generated constructor stub
 		this.addr = addr;
 	}
@@ -54,9 +52,9 @@ public class HTTPCheck {
 			e.printStackTrace();
 		}
 	}
-	public void HtmlToImage(){
-		HtmlImageGenerator generator = new HtmlImageGenerator();
-		generator.loadUrl("http://www.baidu.com");
-		generator.saveAsImage("test.jpg");
-	}
+//	public void HtmlToImage(){
+//		HtmlImageGenerator generator = new HtmlImageGenerator();
+//		generator.loadUrl("http://www.baidu.com");
+//		generator.saveAsImage("test.jpg");
+//	}
 }
