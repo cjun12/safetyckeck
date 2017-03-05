@@ -7,6 +7,7 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.configuration.xml.reload" value="true" />
 	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.action.excludePattern" value="/static/.*?" />
 
 	<package name="default" extends="struts-default" namespace="/">
 		<interceptors>
@@ -25,14 +26,20 @@
 			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
 		</global-exception-mappings>
 	</package>
-	<package name="User" extends="default" namespace="/user">
+	<package name="User" extends="default" namespace="/User">
 		<action name="login" method="login" class="com.safety.action.UserAction">
-			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="namespace">/UserCenter</param>
+				<param name="actionName">index</param>
+			</result>
 		</action>
 		<action name="regist" method="regist" class="com.safety.action.UserAction">
-			<result name="success">/WEB-INF/jsp/login.jsp</result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
+			<result name="success">/WEB-INF/page/Home/index.jsp</result>
+		</action>
+	</package>
+	<package name="UserCenter" extends="default" namespace="/UserCenter">
+		<action name="index" method="index" class="com.safety.action.UserCenterAction">
+			<result name="success">/WEB-INF/page/User/index.jsp</result>
 		</action>
 	</package>
 </struts>    

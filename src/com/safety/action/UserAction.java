@@ -25,6 +25,7 @@ public class UserAction extends ActionSupport {
 	private User u;
 
 	public String login() {
+		u.setPassword(Toolkit.getMD5(u.getPassword()));
 		User user = userService.findUserByNameAndPassword(u.getUsername(), u.getPassword());
 		if(user != null){
 			ActionContext.getContext().getSession().put("user", user);
