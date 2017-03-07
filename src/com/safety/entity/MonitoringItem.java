@@ -2,12 +2,15 @@ package com.safety.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +24,7 @@ import org.springframework.util.StringValueResolver;
 public class MonitoringItem {
 
 	private int id;
+	private int userId;
 	private String target;
 	private String name;
 	private TaskType taskType;
@@ -39,6 +43,16 @@ public class MonitoringItem {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@ManyToOne(cascade={CascadeType.ALL}) 
+	@JoinColumn(name = "userid")
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Column(name = "enabled")

@@ -1,9 +1,13 @@
 package com.safety.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -15,6 +19,7 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private Set<MonitoringItem> items;
 	@Id
 	@GenericGenerator(name="generator",strategy="increment")
 	@GeneratedValue(generator = "generator")
@@ -46,4 +51,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="userId")
+	public Set<MonitoringItem> getItems() {
+		return items;
+	}
+	public void setItems(Set<MonitoringItem> items) {
+		this.items = items;
+	}
+	
 }
