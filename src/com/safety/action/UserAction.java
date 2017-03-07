@@ -22,14 +22,13 @@ public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	@Resource
 	private IUserService userService;
-	@Resource 
-	private IMonitorService monitorService;
 	
 	private User u;
-
+	
 	public String login() {
 		u.setPassword(Toolkit.getMD5(u.getPassword()));
 		User user = userService.findUserByNameAndPassword(u.getUsername(), u.getPassword());
+		Set<MonitoringItem> items = user.getItems();
 		if(user != null){
 			ActionContext.getContext().getSession().put("user", user);
 			return SUCCESS;
