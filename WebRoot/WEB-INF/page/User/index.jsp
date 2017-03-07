@@ -73,10 +73,12 @@
 				<ul class="sidebar-menu" id="nav-accordion">
 
 					<p class="centered">
-						<a href="profile.html"><img src="./static/User/img/default.jpg" class="img-circle"
-							width="60"></a>
+						<a href="profile.html"><img
+							src="./static/User/img/default.jpg" class="img-circle" width="60"></a>
 					</p>
-					<h5 class="centered"><s:property value="#session.user.username" /></h5>
+					<h5 class="centered">
+						<s:property value="#session.user.username" />
+					</h5>
 
 					<li class="mt"><a class="active" href="index.html"> <i
 							class="fa fa-dashboard"></i> <span>概览</span>
@@ -196,12 +198,14 @@
 									<div class="panel-body">
 										<table class="table table-bordered">
 											<thead>
-												<th>服务器</th>
-												<th>系统</th>
-												<th>采集状态</th>
-												<th>系统进程</th>
-												<th>内存使用</th>
-												<th>根分区使用</th>
+												<tr>
+													<th>服务器</th>
+													<th>系统</th>
+													<th>采集状态</th>
+													<th>系统进程</th>
+													<th>内存使用</th>
+													<th>根分区使用</th>
+												</tr>
 											</thead>
 											<tbody>
 												<tr>
@@ -245,8 +249,7 @@
 						<h3>成员</h3>
 						<div class="desc">
 							<div class="thumb">
-								<img class="img-circle" src="" width="35px" height="35px"
-									align="">
+								<img class="img-circle" src="" width="35px" height="35px">
 							</div>
 							<div class="details">
 								<p>

@@ -2,6 +2,8 @@ $(function(){
 	$('#login').on('click',function(){
 		if(!$.cookie('token')){
 			$("#loginModal").modal();
+		}else{
+			location.href="/safe_monitor/UserCenter/index.action"
 		}
 	});
 	$('#regist').on('click',function(){

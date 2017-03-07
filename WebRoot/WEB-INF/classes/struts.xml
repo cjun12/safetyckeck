@@ -38,8 +38,18 @@
 		</action>
 	</package>
 	<package name="UserCenter" extends="default" namespace="/UserCenter">
-		<action name="index" method="index" class="com.safety.action.UserCenterAction">
+		<action name="index" method="index"
+			class="com.safety.action.UserCenterAction">
 			<result name="success">/WEB-INF/page/User/index.jsp</result>
+		</action>
+	</package>
+	<package name="Monitor" extends="default,json-default"
+		namespace="/Monitor">
+		<action name="listAllItem" method="listAllItem"
+			class="com.safety.action.MonitorAction">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
 		</action>
 	</package>
 </struts>    
