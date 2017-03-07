@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2017-03-07 00:00:29
+-- Generation Time: 2017-03-07 17:37:20
 -- 服务器版本： 5.7.11
 -- PHP Version: 5.6.19
 
@@ -63,15 +63,16 @@ CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `token` varchar(32) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `username`, `password`, `email`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'www.dianbiao.com');
+INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `token`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'www.dianbiao.com', 'b737fa6d6239d14324341526479b7637');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +114,7 @@ ALTER TABLE `tb_monitoring_item`
 -- 使用表AUTO_INCREMENT `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
