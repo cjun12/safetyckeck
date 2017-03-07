@@ -51,7 +51,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="userId")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
 	public Set<MonitoringItem> getItems() {
 		return items;
 	}

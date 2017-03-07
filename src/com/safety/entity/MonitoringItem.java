@@ -17,14 +17,13 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-import org.springframework.util.StringValueResolver;
 
 @Entity
 @Table(name = "tb_monitoring_item")
 public class MonitoringItem {
 
 	private int id;
-	private int userId;
+	private User user;
 	private String target;
 	private String name;
 	private TaskType taskType;
@@ -46,13 +45,13 @@ public class MonitoringItem {
 	}
 	
 	@ManyToOne(cascade={CascadeType.ALL}) 
-	@JoinColumn(name = "userid")
-	public int getUserId() {
-		return userId;
+	@JoinColumn(name = "uid")
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Column(name = "enabled")

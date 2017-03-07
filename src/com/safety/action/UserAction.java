@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.safety.entity.User;
+import com.safety.service.IMonitorService;
 import com.safety.service.IUserService;
 import com.safety.service.impl.UserServiceImpl;
 import com.safety.util.Toolkit;
@@ -21,6 +22,8 @@ public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	@Resource
 	private IUserService userService;
+	@Resource 
+	private IMonitorService monitorService;
 	
 	private User u;
 
