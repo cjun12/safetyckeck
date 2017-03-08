@@ -1,10 +1,12 @@
 package com.safety.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -20,7 +22,7 @@ public class User {
 	private String password;
 	private String email;
 	private String token;
-	private Set<MonitoringItem> items;
+	private Set<MonitoringItem> items = new HashSet<MonitoringItem>();
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -70,7 +72,8 @@ public class User {
 		this.token = token;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
 	public Set<MonitoringItem> getItems() {
 		return items;
 	}

@@ -1,8 +1,6 @@
 package com.safety.action;
 
 import java.util.Date;
-import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -11,11 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 
-import antlr.build.Tool;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.safety.entity.MonitoringItem;
 import com.safety.entity.User;
 import com.safety.service.IUserService;
 import com.safety.util.Toolkit;

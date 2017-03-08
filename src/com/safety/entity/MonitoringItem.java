@@ -45,7 +45,7 @@ public class MonitoringItem {
 	}
 	
 	@ManyToOne(cascade={CascadeType.ALL}) 
-	@JoinColumn(name = "uid")
+	@JoinColumn(name = "uid",referencedColumnName="id")
 	public User getUser() {
 		return user;
 	}
@@ -55,7 +55,6 @@ public class MonitoringItem {
 	}
 
 	@Column(name = "enabled")
-	@Type(type = "yes_no")
 	public boolean isEnabled() {
 		return enabled;
 	}

@@ -15,7 +15,7 @@ import com.safety.service.IUserService;
 public class UserServiceImpl implements IUserService {
 	@Resource
 	private IBaseDAO<User> baseDAO;
-
+	
 	@Override
 	public void saveUser(User user) {
 		// TODO Auto-generated method stub

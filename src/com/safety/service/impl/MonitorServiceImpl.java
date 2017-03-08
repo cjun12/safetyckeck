@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.safety.dao.IBaseDAO;
 import com.safety.entity.MonitoringItem;
+import com.safety.entity.User;
 import com.safety.service.IMonitorService;
 
 @Service("monitorService")
@@ -42,9 +43,9 @@ public class MonitorServiceImpl implements IMonitorService {
 	}
 
 	@Override
-	public List<MonitoringItem> findAllList() {
+	public List<MonitoringItem> findAllList(User user) {
 		// TODO Auto-generated method stub
-		return baseDao.find("from MonitoringItem i order by i.createTime");
+		return baseDao.find("from MonitoringItem i,User u where u.id=i.uid order by i.createTime");
 	}
 
 	@Override
