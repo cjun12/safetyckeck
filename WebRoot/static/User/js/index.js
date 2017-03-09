@@ -29,7 +29,8 @@ var UserIndex = {
 				},
 				yAxis : [ {
 					type : 'value',
-					minInterval : 1
+					minInterval : 1,
+					min:0
 				} ],
 				tooltip : {
 					trigger : 'axis'

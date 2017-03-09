@@ -74,11 +74,11 @@
 					<button id="login" class="btn btn-primary">进入控制台</button>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li> <s:if test="#session.user==null">
+					<li><s:if test="#session.user==null">
 							<a id="regist" href="#">注册</a>
 						</s:if> <s:else>
-									<a id="exit" href="/safe_monitor/User/exit.action">退出</a></s:else>
-					</li>
+							<a id="exit" href="/safe_monitor/User/logout.action">退出</a>
+						</s:else></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

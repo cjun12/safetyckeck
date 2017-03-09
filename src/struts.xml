@@ -15,7 +15,7 @@
 				class="com.safety.interceptor.AuthorityInterceptor" />
 			<interceptor-stack name="GlobalStack">
 				<interceptor-ref name="authority">
-					<param name="excludeMethods">login</param>
+					<param name="excludeMethods">login,logout,Index</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
@@ -44,9 +44,10 @@
 		<action name="regist" method="regist" class="com.safety.action.UserAction">
 			<result name="success">/WEB-INF/page/Home/index.jsp</result>
 		</action>
-		<action name="exit" method="exit" class="com.safety.action.UserAction">
-			<result name="success" type="redirect">
-			/
+		<action name="logout" method="logout" class="com.safety.action.UserAction">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/Home</param>
+				<param name="actionName">Index</param>
 			</result>
 		</action>
 	</package>
@@ -63,6 +64,11 @@
 			<result type="json">
 				<param name="root">jsonResult</param>
 			</result>
+		</action>
+	</package>
+	<package name="Home" extends="default" namespace="/Home">
+		<action name="Index" method="Index" class="com.safety.action.HomeAction">
+			<result name="success">/WEB-INF/page/Home/index.jsp</result>
 		</action>
 	</package>
 </struts>    

@@ -8,7 +8,7 @@ public class HomeAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public String index(){
+	public String Index(){
 		return SUCCESS;
 	}
 }

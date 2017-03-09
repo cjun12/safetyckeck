@@ -1,4 +1,8 @@
 $(function() {
+	if($("#regist").length>0){
+        $.cookie('token',null,{expires: -1,path: '/'}); 
+	};
+	
 	$('#login').on('click', function() {
 		if (!$.cookie('token')) {
 			$("#loginModal").modal();

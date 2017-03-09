@@ -63,7 +63,7 @@
 			</div>
 			<div class="top-menu">
 				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="login.html">退出</a></li>
+					<li><s:a cssClass="logout" action="logout" namespace="/User">退出</s:a></li>
 				</ul>
 			</div>
 		</header>
