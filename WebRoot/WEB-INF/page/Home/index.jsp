@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -72,7 +74,11 @@
 					<button id="login" class="btn btn-primary">进入控制台</button>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a id="regist" href="#">注冊</a></li>
+					<li> <s:if test="#session.user==null">
+							<a id="regist" href="#">注册</a>
+						</s:if> <s:else>
+									<a id="exit" href="/safe_monitor/User/exit.action">退出</a></s:else>
+					</li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -228,8 +234,8 @@
 				<p class="copyright text-muted small" style="text-align:center;">Copyright
 					&copy; Your Company 2017. All Rights Reserved</p>
 			</div>
+		</footer>
 	</div>
-	</footer>
 	<div id="loginModal" class="modal fade" tabindex="-1" role="dialog">
 		<form action="./User/login.action" method="post">
 			<div class="modal-dialog" role="document">
@@ -277,23 +283,26 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="username">用户名</label> <input type="text"
-								class="form-control" id="username" placeholder="用户名"
-								name="u.username">
+							<label class="control-label" for="username">用户名</label> <input
+								type="text" class="form-control" id="username" placeholder="用户名"
+								name="u.username" aria-describedby="userTip"> <span
+								id="userTip" class="help-block"></span>
 						</div>
 						<div class="form-group">
-							<label for="password">密码</label> <input type="password"
-								class="form-control" id="password" placeholder="密码"
-								name="u.password">
+							<label class="control-label" for="password">密码</label> <input
+								type="password" class="form-control" id="password"
+								placeholder="密码" name="u.password"><span id="userTip"
+								class="help-block"></span>
 						</div>
-						<div class="form-group">
+						<div class="control-label" class="form-group">
 							<label for="confirm">确认密码</label> <input type="password"
 								class="form-control" id="confirm" placeholder="密码"
-								name="confirm">
+								name="confirm"><span id="userTip" class="help-block"></span>
 						</div>
-						<div class="form-group">
-							<label for="email">邮箱</label> <input type="email"
-								class="form-control" id="email" placeholder="邮箱" name="u.email">
+						<div class="control-label" class="form-group">
+							<label class="control-label" for="email">邮箱</label> <input
+								type="email" class="form-control" id="email" placeholder="邮箱"
+								name="u.email"><span id="userTip" class="help-block"></span>
 						</div>
 					</div>
 					<div class="modal-footer">

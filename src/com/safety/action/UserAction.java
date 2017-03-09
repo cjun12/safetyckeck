@@ -61,6 +61,10 @@ public class UserAction extends ActionSupport {
 		userService.saveUser(u);
 		return SUCCESS;
 	}
+	public String exit(){
+		ActionContext.getContext().getSession().clear();
+		return SUCCESS;
+	}
 
 	public User getU() {
 		return u;

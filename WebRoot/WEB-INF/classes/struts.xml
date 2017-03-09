@@ -26,8 +26,8 @@
 		<default-interceptor-ref name="GlobalStack"></default-interceptor-ref>
 		<global-results>
 			<result name="error">/WEB-INF/page/error.jsp</result>
-			<result name="login">
-				/WEB-INF/page/Home/index.jsp
+			<result name="login" type="redirect">
+				/
 			</result>
 		</global-results>
 		<global-exception-mappings>
@@ -43,6 +43,11 @@
 		</action>
 		<action name="regist" method="regist" class="com.safety.action.UserAction">
 			<result name="success">/WEB-INF/page/Home/index.jsp</result>
+		</action>
+		<action name="exit" method="exit" class="com.safety.action.UserAction">
+			<result name="success" type="redirect">
+			/
+			</result>
 		</action>
 	</package>
 	<package name="UserCenter" extends="default" namespace="/UserCenter">

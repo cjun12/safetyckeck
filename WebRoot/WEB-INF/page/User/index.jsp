@@ -48,7 +48,7 @@
 							class="fa fa-envelope-o"></i> <span class="badge bg-theme">4</span>
 					</a>
 						<ul class="dropdown-menu extended inbox">
-							<div class="notify-arrow notify-arrow-green"></div>
+							<li class="notify-arrow notify-arrow-green"></li>
 							<li>
 								<p class="green">你有5条新消息</p>
 							</li>
@@ -129,11 +129,13 @@
 									<div class="panel-body">
 										<table class="table table-bordered">
 											<thead>
-												<th>监控对象</th>
-												<th>类型</th>
-												<th>异常信息</th>
-												<th>发生时间</th>
-												<th>持续时间</th>
+												<tr>
+													<th>监控对象</th>
+													<th>类型</th>
+													<th>异常信息</th>
+													<th>发生时间</th>
+													<th>持续时间</th>
+												</tr>
 											</thead>
 											<tbody>
 												<tr>
@@ -165,10 +167,12 @@
 									<div class="panel-body">
 										<table class="table table-bordered">
 											<thead>
-												<th>监控对象</th>
-												<th>类型</th>
-												<th>响应时间</th>
-												<th>访问成功率</th>
+												<tr>
+													<th>监控对象</th>
+													<th>类型</th>
+													<th>响应时间</th>
+													<th>访问成功率</th>
+												</tr>
 											</thead>
 											<tbody>
 												<tr>
