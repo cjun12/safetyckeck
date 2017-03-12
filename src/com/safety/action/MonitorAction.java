@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -22,11 +23,14 @@ public class MonitorAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Resource
 	private IMonitorService monitorService;
+
+	@Resource
 	private IUserService userService;
 	private MonitoringItem item;
 	private String token;
-	private Map<String, Object> jsonResult=new HashMap<String, Object>();
+	private Map<String, Object> jsonResult = new HashMap<String, Object>();
 
 	public String addItem() {
 		if (!monitorService.checkTarget(item))
@@ -57,7 +61,7 @@ public class MonitorAction extends ActionSupport {
 	public String listAllItem() {
 		Map<String, Object> result = new HashMap<String, Object>();
 		User user = (User) ActionContext.getContext().getSession().get("user");
-		
+
 		if (!token.equals(user.getToken())) {
 			return ERROR;
 		}
@@ -125,5 +129,5 @@ public class MonitorAction extends ActionSupport {
 	public void setJsonResult(Map<String, Object> jsonResult) {
 		this.jsonResult = jsonResult;
 	}
-	
+
 }

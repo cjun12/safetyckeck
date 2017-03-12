@@ -43,7 +43,13 @@ public class MonitorServiceImpl implements IMonitorService {
 	}
 
 	@Override
-	public List<MonitoringItem> findAllList(User user) {
+	public List<MonitoringItem> findAllList() {
+		// TODO Auto-generated method stub
+		return baseDao.find("from MonitoringItem i order by i.createTime");
+	}
+
+	@Override
+	public List<MonitoringItem> findUserAllList(User user) {
 		// TODO Auto-generated method stub
 		return baseDao.find("from MonitoringItem i,User u where u.id=i.uid order by i.createTime");
 	}

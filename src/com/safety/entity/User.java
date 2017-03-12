@@ -23,6 +23,7 @@ public class User {
 	private String email;
 	private String token;
 	private Set<MonitoringItem> items = new HashSet<MonitoringItem>();
+	private Set<Message> messages = new HashSet<Message>();
 
 	@Id
 	@GenericGenerator(name = "generator", strategy = "increment")
@@ -80,6 +81,15 @@ public class User {
 
 	public void setItems(Set<MonitoringItem> items) {
 		this.items = items;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
+	public Set<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
 	}
 
 }

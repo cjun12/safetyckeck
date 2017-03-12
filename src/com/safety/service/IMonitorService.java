@@ -15,9 +15,11 @@ public interface IMonitorService {
 
 	public void deleteItem(MonitoringItem item);
 
-	public List<MonitoringItem> findAllList(User user);
+	public List<MonitoringItem> findAllList();
+
+	public List<MonitoringItem> findUserAllList(User user);
 
 	public List<MonitoringItem> findItemsByTaskType(int tasktype);
-	
+
 	public boolean checkTarget(MonitoringItem item);
 }

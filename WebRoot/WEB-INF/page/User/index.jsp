@@ -45,19 +45,29 @@
 				<ul class="nav top-menu">
 					<li class="dropdown"><a data-toggle="dropdown"
 						href="index.html#" class="dropdown-toggle"> <i
-							class="fa fa-envelope-o"></i> <span class="badge bg-theme">4</span>
+							class="fa fa-envelope-o"></i> <span class="badge bg-theme"><s:property
+									value="#session.user.messages.size()" /></span>
 					</a>
 						<ul class="dropdown-menu extended inbox">
 							<li class="notify-arrow notify-arrow-green"></li>
 							<li>
-								<p class="green">你有5条新消息</p>
+								<p class="green">
+									你有
+									<s:property value="#session.user.messages.size()" />
+									条新消息
+								</p>
 							</li>
-							<li><a href="index.html#"> <span class="subject">
-										<span class="from">监控项</span> <span class="time">时间</span> <span
-										class="message">具体消息</span>
-								</span>
-							</a></li>
-							<li><a href="index.html#">See all messages</a></li>
+							<s:iterator value="#session.user.messages" var="item">
+								<s:if test="!#item.have_read">
+									<li><a href="#"> <span class="subject"> <span
+												class="from"><s:property value="#item.subject" /></span> <span
+												class="time"><s:date format="yyyy/MM/dd hh:mm:ss" name="#item.dtime"/></span>
+										</span> <span class="message"><s:property value="#item.text" />
+										</span>
+									</a></li>
+								</s:if>
+							</s:iterator>
+							<li><a href="index.html#">查看所有消息</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -88,9 +98,10 @@
 							class="fa fa-desktop"></i> <span>监控</span>
 					</a>
 						<ul class="sub">
-							<li><a href="calendar.html">Calendar</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="todo_list.html">Todo List</a></li>
+							<li><a href="calendar.html">HTTP监控</a></li>
+							<li><a href="gallery.html">PING监控</a></li>
+							<li><a href="todo_list.html">DNS监控</a></li>
+							<li><a href="todo_list.html">服务器监控</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-cogs"></i> <span>告警</span>

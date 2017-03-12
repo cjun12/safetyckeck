@@ -16,7 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "tb_monitoring_item")
@@ -43,9 +42,9 @@ public class MonitoringItem {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	@ManyToOne(cascade={CascadeType.ALL}) 
-	@JoinColumn(name = "uid",referencedColumnName="id")
+
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "uid", referencedColumnName = "id")
 	public User getUser() {
 		return user;
 	}
@@ -120,7 +119,7 @@ public class MonitoringItem {
 		this.createTime = createTime;
 	}
 
-	public enum State{
+	public enum State {
 		NORMAL, UNKNOW, EXCEPTION
 	}
 
