@@ -86,17 +86,17 @@ public class CopyOfMonitorListener implements ServletContextListener {
 			}
 			for (MonitoringItem item : items) {
 				switch (item.getTaskType()) {
-				case HTTP:
+				case MonitoringItem.HTTP:
 					HTTPCheckService service = new HTTPCheckService();
 					service.setAddr(item.getTarget());
 					int result = service.sendGet();
 					System.out.println(result);
 					break;
-				case DNS:
+				case MonitoringItem.DNS:
 					String DNSResult = OtherCheckService.dns(item.getTarget());
 					System.out.println(DNSResult);
 					break;
-				case PING:
+				case MonitoringItem.PING:
 					boolean PINGResult = OtherCheckService.ping(item
 							.getTarget());
 					System.out.println(PINGResult);

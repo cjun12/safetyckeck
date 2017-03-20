@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2017-03-07 17:37:20
+-- Generation Time: 2017-03-20 01:26:32
 -- 服务器版本： 5.7.11
 -- PHP Version: 5.6.19
 
@@ -23,6 +23,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `tb_dns_detail`
+--
+
+CREATE TABLE `tb_dns_detail` (
+  `id` int(11) NOT NULL,
+  `itemid` int(11) NOT NULL,
+  `target` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `create_time` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tb_http_detail`
+--
+
+CREATE TABLE `tb_http_detail` (
+  `id` int(11) NOT NULL,
+  `itemId` int(11) NOT NULL,
+  `status_code` char(8) NOT NULL,
+  `create_time` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `tb_message`
 --
 
@@ -35,6 +62,14 @@ CREATE TABLE `tb_message` (
   `subject` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `tb_message`
+--
+
+INSERT INTO `tb_message` (`id`, `uid`, `dtime`, `have_read`, `text`, `subject`) VALUES
+(1, 1, '2017-03-11 19:12:03', 0, '测试测试', '从厕所测试'),
+(2, 1, '2017-03-11 19:12:08', 0, '测试大概', '吧 范德萨');
+
 -- --------------------------------------------------------
 
 --
@@ -44,13 +79,49 @@ CREATE TABLE `tb_message` (
 CREATE TABLE `tb_monitoring_item` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `target` varchar(255) NOT NULL,
+  `target` varchar(255) DEFAULT NULL,
   `name` varchar(30) NOT NULL,
   `task_type` int(10) NOT NULL,
   `frequency` int(11) NOT NULL,
   `state` int(10) NOT NULL,
   `enabled` tinyint(4) NOT NULL,
   `create_time` timestamp NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `tb_monitoring_item`
+--
+
+INSERT INTO `tb_monitoring_item` (`id`, `uid`, `target`, `name`, `task_type`, `frequency`, `state`, `enabled`, `create_time`) VALUES
+(1, 1, '127.0.0.1', 'PING测试', 1, 1, 1, 1, '2017-03-12 13:46:40'),
+(2, 1, 'http://127.0.0.1', 'PING测试', 0, 1, 1, 1, '2017-03-12 13:46:53');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tb_ping_detail`
+--
+
+CREATE TABLE `tb_ping_detail` (
+  `id` int(11) NOT NULL,
+  `itemid` int(11) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `create_time` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tb_snmp_detail`
+--
+
+CREATE TABLE `tb_snmp_detail` (
+  `id` int(11) NOT NULL,
+  `itemid` int(11) NOT NULL,
+  `sysdesc` text NOT NULL,
+  `cpuInfo` text NOT NULL,
+  `swapDisk` text NOT NULL,
+  `create_time` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,11 +143,37 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `token`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'www.dianbiao.com', 'b737fa6d6239d14324341526479b7637');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'www.dianbiao.com', 'ee506dbdfc031b625ce1ce0e6dd4fa88');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tb_waring_message`
+--
+
+CREATE TABLE `tb_waring_message` (
+  `id` int(11) NOT NULL,
+  `mid` int(11) NOT NULL,
+  `dtime` timestamp NOT NULL,
+  `text` text NOT NULL,
+  `duration` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tb_dns_detail`
+--
+ALTER TABLE `tb_dns_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_http_detail`
+--
+ALTER TABLE `tb_http_detail`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_message`
@@ -91,9 +188,27 @@ ALTER TABLE `tb_monitoring_item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_ping_detail`
+--
+ALTER TABLE `tb_ping_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_snmp_detail`
+--
+ALTER TABLE `tb_snmp_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_waring_message`
+--
+ALTER TABLE `tb_waring_message`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -101,14 +216,34 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- 使用表AUTO_INCREMENT `tb_dns_detail`
+--
+ALTER TABLE `tb_dns_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `tb_http_detail`
+--
+ALTER TABLE `tb_http_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- 使用表AUTO_INCREMENT `tb_message`
 --
 ALTER TABLE `tb_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `tb_monitoring_item`
 --
 ALTER TABLE `tb_monitoring_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- 使用表AUTO_INCREMENT `tb_ping_detail`
+--
+ALTER TABLE `tb_ping_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `tb_snmp_detail`
+--
+ALTER TABLE `tb_snmp_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- 使用表AUTO_INCREMENT `tb_user`

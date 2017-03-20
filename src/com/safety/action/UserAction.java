@@ -43,7 +43,7 @@ public class UserAction extends ActionSupport {
 			user.setToken(token);
 			userService.updateUser(user);
 			Cookie cookie = new Cookie("token", token);
-			cookie.setMaxAge(7 * 24 * 60 * 60);// ÉèÖÃÒ»ÖÜºó¹ıÆÚ
+			cookie.setMaxAge(7 * 24 * 60 * 60);//Cookieä¿å­˜7å¤©
 			cookie.setPath("/");
 			response.addCookie(cookie);
 			ActionContext.getContext().getSession().put("user", user);

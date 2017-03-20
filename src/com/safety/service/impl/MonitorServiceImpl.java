@@ -55,16 +55,16 @@ public class MonitorServiceImpl implements IMonitorService {
 	}
 
 	@Override
-	public List<MonitoringItem> findItemsByTaskType(int tasktype) {
+	public List<MonitoringItem> findItemsByTaskType(int tasktype,int uid) {
 		// TODO Auto-generated method stub
-		return baseDao.find("from MonitoringItem i where i.taskType = ?",
-				new Object[] { tasktype });
+		return baseDao.find("from MonitoringItem i where i.taskType = ? and i.user.id=?",
+				new Object[] { tasktype,uid });
 	}
 
 	@Override
 	public boolean checkTarget(MonitoringItem item) {
 		// TODO Auto-generated method stub
-		if (item.getTaskType().equals(MonitoringItem.TaskType.HTTP)) {
+		if (item.getTaskType()==MonitoringItem.PING) {
 			if (!item.getTarget()
 					.matches(
 							"(http|ftp|https):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?")) {

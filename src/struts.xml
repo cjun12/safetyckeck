@@ -56,11 +56,32 @@
 			class="com.safety.action.UserCenterAction">
 			<result name="success">/WEB-INF/page/User/index.jsp</result>
 		</action>
+		<action name="httpMonitor" method="httpMonitor"
+			class="com.safety.action.UserCenterAction">
+			<result name="success">/WEB-INF/page/User/httpDetail.jsp</result>
+		</action>
+		<action name="dnsMonitor" method="dnsMonitor"
+			class="com.safety.action.UserCenterAction">
+			<result name="success">/WEB-INF/page/User/dnsDetail.jsp</result>
+		</action>
+		<action name="pingMonitor" method="pingMonitor"
+			class="com.safety.action.UserCenterAction">
+			<result name="success">/WEB-INF/page/User/pingDetail.jsp</result>
+		</action>
+		<action name="snmpMonitor" method="snmpMonitor"
+			class="com.safety.action.UserCenterAction">
+			<result name="success">/WEB-INF/page/User/snmpDetail.jsp</result>
+		</action>
 	</package>
 	<package name="Monitor" extends="default,json-default"
 		namespace="/Monitor">
 		<action name="listAllItem" method="listAllItem"
 			class="com.safety.action.MonitorAction">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
+		</action>
+		<action name="update" method="updateItem" class="com.safety.action.MonitorAction">
 			<result type="json">
 				<param name="root">jsonResult</param>
 			</result>

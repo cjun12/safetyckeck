@@ -73,8 +73,9 @@ public class User {
 		this.token = token;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+	// @OneToMany(cascade = CascadeType.ALL, mappedBy =
+	// "user",fetch=FetchType.EAGER)
 	public Set<MonitoringItem> getItems() {
 		return items;
 	}
@@ -83,7 +84,7 @@ public class User {
 		this.items = items;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 	public Set<Message> getMessages() {
 		return messages;
 	}

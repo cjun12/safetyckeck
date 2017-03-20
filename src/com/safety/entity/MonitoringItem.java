@@ -21,13 +21,20 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "tb_monitoring_item")
 public class MonitoringItem {
 
+	public final static int NORMAL = 0;
+	public final static int UNKNOW = 1;
+	public final static int EXCEPTION = 2;
+	public final static int HTTP = 0;
+	public final static int PING = 1;
+	public final static int DNS = 2;
+	public final static int SNMP = 3;
 	private int id;
 	private User user;
 	private String target;
 	private String name;
-	private TaskType taskType;
+	private int taskType;
 	private int frequency;
-	private State state;
+	private int state;
 	private boolean enabled;
 	private Date createTime;
 
@@ -39,7 +46,7 @@ public class MonitoringItem {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,11 +61,11 @@ public class MonitoringItem {
 	}
 
 	@Column(name = "enabled")
-	public boolean isEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -81,12 +88,11 @@ public class MonitoringItem {
 	}
 
 	@Column(name = "task_type")
-	@Enumerated(EnumType.ORDINAL)
-	public TaskType getTaskType() {
+	public int getTaskType() {
 		return taskType;
 	}
 
-	public void setTaskType(TaskType taskType) {
+	public void setTaskType(int taskType) {
 		this.taskType = taskType;
 	}
 
@@ -100,12 +106,11 @@ public class MonitoringItem {
 	}
 
 	@Column(name = "state")
-	@Enumerated(EnumType.ORDINAL)
-	public State getState() {
+	public int getState() {
 		return state;
 	}
 
-	public void setState(State state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 
@@ -119,11 +124,4 @@ public class MonitoringItem {
 		this.createTime = createTime;
 	}
 
-	public enum State {
-		NORMAL, UNKNOW, EXCEPTION
-	}
-
-	public enum TaskType {
-		HTTP, PING, DNS
-	}
 }

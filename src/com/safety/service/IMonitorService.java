@@ -19,7 +19,7 @@ public interface IMonitorService {
 
 	public List<MonitoringItem> findUserAllList(User user);
 
-	public List<MonitoringItem> findItemsByTaskType(int tasktype);
+	public List<MonitoringItem> findItemsByTaskType(int tasktype,int uid);
 
 	public boolean checkTarget(MonitoringItem item);
 }

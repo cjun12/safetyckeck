@@ -46,13 +46,18 @@ public class MonitorAction extends ActionSupport {
 	}
 
 	public String updateItem() {
-		monitorService.updateItem(item);
+		MonitoringItem i  = monitorService.findItemById(item.getId());
+		i.setEnabled(item.getEnabled());
+		monitorService.updateItem(i);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("result", "success");
+		jsonResult=result;
 		return SUCCESS;
 	}
 
 	public String listTTItem() {
 		List<MonitoringItem> items = monitorService.findItemsByTaskType(item
-				.getTaskType().ordinal());
+				.getTaskType(),2);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("items", items);
 		return SUCCESS;
@@ -69,20 +74,20 @@ public class MonitorAction extends ActionSupport {
 		int[] cnt = new int[8];
 		for (MonitoringItem item : items) {
 			switch (item.getTaskType()) {
-			case HTTP:
-				if (item.getState() == MonitoringItem.State.NORMAL)
+			case MonitoringItem.HTTP:
+				if (item.getState() == MonitoringItem.NORMAL)
 					cnt[0]++;
 				else
 					cnt[1]++;
 				break;
-			case DNS:
-				if (item.getState() == MonitoringItem.State.NORMAL)
+			case MonitoringItem.PING:
+				if (item.getState() == MonitoringItem.NORMAL)
 					cnt[2]++;
 				else
 					cnt[3]++;
 				break;
-			case PING:
-				if (item.getState() == MonitoringItem.State.NORMAL)
+			case MonitoringItem.DNS:
+				if (item.getState() == MonitoringItem.NORMAL)
 					cnt[4]++;
 				else
 					cnt[5]++;
@@ -128,6 +133,14 @@ public class MonitorAction extends ActionSupport {
 
 	public void setJsonResult(Map<String, Object> jsonResult) {
 		this.jsonResult = jsonResult;
+	}
+
+	public MonitoringItem getItem() {
+		return item;
+	}
+
+	public void setItem(MonitoringItem item) {
+		this.item = item;
 	}
 
 }

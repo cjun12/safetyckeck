@@ -38,30 +38,29 @@ public class MonitorListener implements ServletContextListener {
 				.getWebApplicationContext(servletContext);
 		monitorService = (IMonitorService) springContext.getBean("monitorService");
 		Timer timer = new Timer();
-		timer.schedule(new CheckTask(), 0,1000 * 10);
+		timer.schedule(new CheckTask(), 0,1000 * 60);
 	}
 
 	class CheckTask extends TimerTask {
-
 		@Override
 		public void run() {
 			List<MonitoringItem> items = monitorService.findAllList();
 			// TODO Auto-generated method stub
 			for (MonitoringItem item : items) {
 				switch (item.getTaskType()) {
-				case HTTP:
+				case MonitoringItem.HTTP:
 					HTTPCheckService service = new HTTPCheckService();
 					service.setAddr(item.getTarget());
 					int result = service.sendGet();
 					System.out.println(result+"\t HTTP:"+item
 							.getTarget());
 					break;
-				case DNS:
+				case MonitoringItem.DNS:
 					String DNSResult = OtherCheckService.dns(item.getTarget());
 					System.out.println(DNSResult+"\t DNS:"+item
 							.getTarget());
 					break;
-				case PING:
+				case MonitoringItem.PING:
 					boolean PINGResult = OtherCheckService.ping(item
 							.getTarget());
 					System.out.println(PINGResult+"\t PING:"+item
